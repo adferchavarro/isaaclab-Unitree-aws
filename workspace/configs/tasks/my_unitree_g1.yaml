@@ -1,0 +1,33 @@
+
+task:
+  name: MyUnitreeG1
+  physics_engine: "physx"
+  sim:
+    dt: 0.005
+    gravity: [0.0, 0.0, -9.81]
+    substeps: 2
+    up_axis: "z"
+  env:
+    num_envs: 2048
+    episode_length_s: 10.0
+  rewards:
+    standing_height_target: 0.9
+    balance_bonus: 1.0
+    fall_penalty: -1.0
+  actions:
+    control_type: "position"
+    action_scale: 0.5
+    decimation: 4
+  observations:
+    history_length: 1
+    normalize: True
+  training:
+    algorithm: "PPO"
+    gamma: 0.99
+    lambda: 0.95
+    learning_rate: 0.0003
+    entropy_coef: 0.01
+    value_loss_coef: 1.0
+    num_steps_per_env: 32
+    num_epochs: 5
+    mini_batch_size: 16384
